@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+<%#    <p><%= notice % ></p>  %>
+    <h1>トピック一覧</h1>
+      <%= link_to "トピックを作成する", new_topic_path, class: 'btn btn-default' %>
+      <% @topics.each do |topic| %>
+      <div class="row row-eq-heigt clearfix">
+        <div class="topicIcon pull-left">
+          <%#= profile_img(topic.user) %>
+          <div class="topicUsername">
+          <p>投稿者：</p>
+          <p><%#= topic.user.name  %></p>
+          </div>
+        </div>
+        <div class="topicBotan pull-right">
+          <%= link_to "編集", edit_topic_path(topic.id), class: 'btn btn-default btn-sm btn-success' %>
+          <%= link_to '削除', topic_path(topic.id), method: :delete, data:{confirm:'本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn-danger' %>
+        </div>
+        <div class="topicContent">
+          <%= link_to topic_path(topic) do %>
+            <h4><strong><%= topic.title %></strong></h4>
+          <% end %>
+          <p><%= topic.content %></p>
+          
+        </div>
+            
+            
+      </div>
+      <% end %>
+    <div id="topic-page-top-btn" class="topic-page-top-btn">
+      <p><a class="move-page-top" id="move-page-top">▲</a></p>
+    </div>
+      
+  </div>
+</div>
